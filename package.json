@@ -7,6 +7,8 @@
   "type": "commonjs",
   "main": "server/index.js",
   "scripts": {
+    "install:workbuddy": "node scripts/install.cjs",
+    "pack": "node scripts/pack.cjs",
     "test": "node test/router.test.cjs && node test/mcp.test.cjs && node test/stdio-smoke.cjs"
   },
   "engines": {

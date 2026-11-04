@@ -50,7 +50,11 @@ WorkBuddy 官方模型与积分由客户端后端管理，当前版本没有公�
 
 只有第二种模式才会真正发生外部模型调用。拆分任务还必须显式传 `confirmed=true`，并受 `budget` 限制。
 
-## 安装
+## 给同事安装
+
+最快方式见 [INSTALL.md](./INSTALL.md)：从 GitHub 克隆或下载 Release zip，解压后运行 `node scripts/install.cjs`，再重启 WorkBuddy。安装脚本走用户级 `mcp.json`，不依赖容易变化的本地插件市场 UI。
+
+## 安装格式说明
 
 ### 方式一：本地目录插件
 
@@ -68,7 +72,7 @@ workbuddy-cost-router/
 └── skills/cost-router/SKILL.md
 ```
 
-在 WorkBuddy 插件页启用 `workbuddy-cost-router`，然后重启 WorkBuddy（MCP server 和 hooks 在启动时加载）。
+在 WorkBuddy 插件页启用 `workbuddy-cost-router`，然后重启 WorkBuddy（MCP server 和 hooks 在启动时加载）。该方式依赖 WorkBuddy 版本是否显示本地市场入口；若找不到市场，请用上面的安装脚本。
 
 ### 方式二：本地 marketplace
 
@@ -86,6 +90,14 @@ plugins/workbuddy-cost-router/
 ```
 
 把 zip 解压到一个目录，在 WorkBuddy 中以「本地目录 marketplace」导入该目录，再安装 `workbuddy-cost-router`。源码目录里的 `.codebuddy-plugin/marketplace.json` 仅用于生成这个结构，不应把源码根目录本身同时当作插件和市场导入。
+
+WorkBuddy 5.9.3 的界面未必提供「添加本地市场」入口。手工安装时还需要让以下三个本机状态文件彼此一致（都已由安装脚本/仓库检查，先备份再改）：
+
+- `~/ .workbuddy/plugins/known_marketplaces.json`：登记市场目录。
+- `~/ .workbuddy/plugins/installed_plugins.json`：登记 `workbuddy-cost-router@workbuddy-cost-router-local` 的 cache 安装路径。
+- `~/ .workbuddy/settings.json`：在 `enabledPlugins` 中把该键设为 `true`。
+
+仅新增市场登记不会让插件出现在「已安装」列表；WorkBuddy 还要按 `installed_plugins.json` 定位插件，按 `settings.json` 决定是否启用。
 
 ## 验证
 
