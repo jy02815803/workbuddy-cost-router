@@ -1,0 +1,15 @@
+{
+  "description": "WorkBuddy Cost Router 零成本自动研判钩子。",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CODEBUDDY_PLUGIN_ROOT}/hooks/auto-plan.cjs\""
+          }
+        ]
+      }
+    ]
+  }
+}

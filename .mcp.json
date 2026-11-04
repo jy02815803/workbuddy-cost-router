@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "workbuddy-cost-router": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${CODEBUDDY_PLUGIN_ROOT}/server/index.js"
+      ],
+      "cwd": "${CODEBUDDY_PLUGIN_ROOT}",
+      "env": {
+        "COST_ROUTER_DATA_DIR": "${CODEBUDDY_PLUGIN_DATA}",
+        "COST_ROUTER_MODEL_CATALOG": "${CODEBUDDY_PLUGIN_ROOT}/config/models.json"
+      },
+      "defer_loading": false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "workbuddy-cost-router-local",
+  "description": "WorkBuddy 成本路由本地插件市场。",
+  "owner": {
+    "name": "jy02815803"
+  },
+  "plugins": [
+    {
+      "name": "workbuddy-cost-router",
+      "description": "按 WorkBuddy credits 倍率和能力门槛研判、规划、编排复杂任务。",
+      "version": "0.1.0",
+      "source": "./plugins/workbuddy-cost-router",
+      "category": "效率工具",
+      "author": {
+        "name": "jy02815803"
+      },
+      "license": "MIT"
+    }
+  ]
+}

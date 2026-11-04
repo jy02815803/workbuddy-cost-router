@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "currency": "credits",
+  "catalog": "./models.json",
+  "unknownCreditMultiplier": 1,
+  "defaultBudgetCredits": 1,
+  "minChars": 12,
+  "floors": {
+    "vision": 4,
+    "longdoc": 3,
+    "reasoning": 4,
+    "code": 4,
+    "writing": 3,
+    "text": 3,
+    "bulk": 3
+  },
+  "synthesis": {
+    "preferCapability": true,
+    "minCapability": 4,
+    "maxCreditMultiplier": 0.8
+  },
+  "execution": {
+    "mode": "openai-compatible",
+    "enabled": false,
+    "baseUrlEnv": "COST_ROUTER_BASE_URL",
+    "apiKeyEnv": "COST_ROUTER_API_KEY",
+    "path": "/chat/completions",
+    "timeoutMs": 120000,
+    "note": "WorkBuddy 官方模型与积分由客户端后端管理，MCP server 不能替它调用官方会话模型。默认仅研判和规划；配置 OpenAI 兼容端点后才允许 run 实际调用模型。"
+  },
+  "overrides": {},
+  "onlyProviders": [],
+  "promotions": {
+    "source": "WorkBuddy modelPromotions",
+    "applyClientDiscounts": false,
+    "note": "限时免费、夜间折扣由 WorkBuddy 客户端结算；本插件只读取官方显示的 credits 倍率，不自行重算折扣。"
+  }
+}

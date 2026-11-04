@@ -1,0 +1,23 @@
+{
+  "name": "workbuddy-cost-router",
+  "version": "0.1.0",
+  "description": "WorkBuddy 成本路由：按积分倍率和能力门槛研判、规划、编排复杂任务。只适用于 WorkBuddy 插件/MCP 格式。",
+  "description_en": "WorkBuddy Cost Router: credit-aware task triage, planning and orchestration for WorkBuddy plugins and MCP servers.",
+  "author": {
+    "name": "jy02815803"
+  },
+  "license": "MIT",
+  "keywords": [
+    "workbuddy",
+    "credits",
+    "cost-router",
+    "orchestration",
+    "multi-model",
+    "mcp"
+  ],
+  "category": "效率工具",
+  "mcpServers": "./.mcp.json",
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/",
+  "defaultEnabled": true
+}

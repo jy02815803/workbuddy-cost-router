@@ -1,0 +1,15 @@
+{
+  "name": "workbuddy-cost-router",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WorkBuddy-only credit-aware task router plugin and MCP server.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "node test/router.test.cjs && node test/mcp.test.cjs && node test/stdio-smoke.cjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
