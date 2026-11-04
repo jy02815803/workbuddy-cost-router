@@ -10,11 +10,27 @@ cd workbuddy-cost-router
 node scripts/install.cjs
 ```
 
-Windows 也可下载 Release 里的 `workbuddy-cost-router-0.1.0.zip`，解压后进入插件目录，运行：
+Windows 也可下载 Release 里的 `workbuddy-cost-router-0.1.0.zip`，解压后进入解压出来的根目录（里面应能看到 `scripts` 文件夹和 `INSTALL.md`），运行：
 
 ```powershell
 node scripts\install.cjs
 ```
+
+## U 盘复制
+
+1. 把 `workbuddy-cost-router-0.1.0.zip` 复制到 U 盘，或者先解压后把整个文件夹复制到 U 盘。
+2. 在同事电脑把 zip 解压到普通目录，例如 `D:\workbuddy-cost-router`；不要解压到 WorkBuddy 安装目录，也不要放进 `Program Files`。
+3. 打开 PowerShell，进入解压目录：
+
+```powershell
+cd D:\workbuddy-cost-router
+node scripts\install.cjs
+```
+
+4. 看到 `已安装到：...\plugins\workbuddy-cost-router` 后，完全退出并重新启动 WorkBuddy。
+5. 在 `/mcp` 或连接器列表检查 `workbuddy-cost-router`；不需要找插件市场。
+
+如果 U 盘里已经是解压后的文件夹，直接对那个文件夹执行第 3 步即可，前提是文件夹根目录里能看到 `scripts\install.cjs`。
 
 安装脚本会：
 

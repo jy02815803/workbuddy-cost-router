@@ -7,15 +7,16 @@ const { execFileSync } = require('node:child_process')
 
 const root = path.join(__dirname, '..')
 const output = path.join(root, 'workbuddy-cost-router-0.1.0.zip')
-const pluginFiles = [
+const entries = [
   '.codebuddy-plugin/plugin.json',
+  '.gitignore',
   '.mcp.json',
+  'INSTALL.md',
   'LICENSE',
   'README.md',
   'package.json',
   'config/models.json',
   'config/routing.json',
-  'INSTALL.md',
   'hooks/hooks.json',
   'hooks/auto-plan.cjs',
   'scripts/install.cjs',
@@ -27,11 +28,10 @@ const pluginFiles = [
   'server/orchestrator.cjs',
   'server/ledger.cjs',
   'skills/cost-router/SKILL.md',
-]
-const entries = [
-  { source: '.codebuddy-plugin/marketplace.json', target: '.codebuddy-plugin/marketplace.json' },
-  ...pluginFiles.map((file) => ({ source: file, target: `plugins/workbuddy-cost-router/${file}` })),
-]
+  'test/router.test.cjs',
+  'test/mcp.test.cjs',
+  'test/stdio-smoke.cjs',
+].map((file) => ({ source: file, target: file }))
 
 for (const entry of entries) {
   if (!fs.existsSync(path.join(root, entry.source))) throw new Error(`打包缺少文件：${entry.source}`)
@@ -55,4 +55,5 @@ if (process.platform === 'win32') {
   fs.rmSync(staging, { recursive: true, force: true })
 }
 
-console.log(`已生成 ${output}`)
+console.log(`已生成源码安装 zip：${output}`)
+console.log('解压后运行 node scripts/install.cjs；不需要导入本地插件市场。')

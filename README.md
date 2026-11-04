@@ -76,28 +76,29 @@ workbuddy-cost-router/
 
 ### 方式二：本地 marketplace
 
-`scripts/pack.cjs` 生成的 zip 采用本地市场结构：
+仓库仍保留 `.codebuddy-plugin/marketplace.json` 作为插件格式兼容样本；但 `scripts/pack.cjs` 生成的 Release zip 是面向同事安装的源码包：
 
 ```text
-.codebuddy-plugin/marketplace.json
-plugins/workbuddy-cost-router/
+workbuddy-cost-router-0.1.0.zip
 ├── .codebuddy-plugin/plugin.json
 ├── .mcp.json
+├── INSTALL.md
+├── scripts/install.cjs
 ├── config/
 ├── hooks/
 ├── server/
 └── skills/
 ```
 
-把 zip 解压到一个目录，在 WorkBuddy 中以「本地目录 marketplace」导入该目录，再安装 `workbuddy-cost-router`。源码目录里的 `.codebuddy-plugin/marketplace.json` 仅用于生成这个结构，不应把源码根目录本身同时当作插件和市场导入。
+把 zip 解压后运行 `node scripts/install.cjs`，不要尝试在 WorkBuddy 中导入本地市场。源码目录里的 `.codebuddy-plugin/marketplace.json` 仅用于格式兼容，不是当前推荐安装路径。
 
-WorkBuddy 5.9.3 的界面未必提供「添加本地市场」入口。手工安装时还需要让以下三个本机状态文件彼此一致（都已由安装脚本/仓库检查，先备份再改）：
+WorkBuddy 5.9.3 的界面未必提供「添加本地市场」入口，产品配置刷新还可能清理手工写入的插件登记，因此不再推荐手工改以下状态文件：
 
 - `~/ .workbuddy/plugins/known_marketplaces.json`：登记市场目录。
 - `~/ .workbuddy/plugins/installed_plugins.json`：登记 `workbuddy-cost-router@workbuddy-cost-router-local` 的 cache 安装路径。
 - `~/ .workbuddy/settings.json`：在 `enabledPlugins` 中把该键设为 `true`。
 
-仅新增市场登记不会让插件出现在「已安装」列表；WorkBuddy 还要按 `installed_plugins.json` 定位插件，按 `settings.json` 决定是否启用。
+仅新增市场登记不会让插件出现在「已安装」列表；WorkBuddy 还要按 `installed_plugins.json` 定位插件，按 `settings.json` 决定是否启用。请改用 `scripts/install.cjs` 的用户级 `mcp.json` 通道。
 
 ## 验证
 
